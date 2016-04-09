@@ -1,0 +1,25 @@
+{
+  "name": "react-play",
+  "version": "1.0.0",
+  "description": "project with independent react experiments ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brunops/react-play.git"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "redux",
+    "webpack"
+  ],
+  "author": "brunops",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunops/react-play/issues"
+  },
+  "homepage": "https://github.com/brunops/react-play#readme"
+}
