@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 
-Go to `http://localhost:8080/gen`
+Go to `http://localhost:8080/`
 
 #License
 
