@@ -6,7 +6,16 @@ Experiments with React, react-router, redux .....
 
 ```sh
 npm install
-npm start
+```
+
+One tab:
+```sh
+webpack -w
+```
+
+Another tab:
+```sh
+npm run watch
 ```
 
 Go to `http://localhost:8080/`
