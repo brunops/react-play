@@ -1,3 +1,4 @@
+import { createStore } from 'redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -5,32 +6,7 @@ import Menu from '../Menu'
 
 require('file?name=[name].[ext]!./app4.html')
 
-const createStore = (reducer) => {
-    let state,
-        listeners = []
-
-    const getState = () => state
-
-    const dispatch = (action) => {
-        state = reducer(state, action)
-        listeners.forEach(listener => listener())
-    }
-
-    const subscribe = (listener) => {
-        listeners.push(listener)
-        // return an unsubscribe function
-        return () => {
-            listeners.filter(l => l !== listener)
-        }
-    }
-
-    // initialize store
-    dispatch({})
-
-    return { getState, dispatch, subscribe }
-}
-
-const reducer = (state = 0, action) => {
+const counter = (state = 0, action) => {
     switch (action.type) {
         case 'INCREMENT':
             return state + 1
@@ -41,32 +17,34 @@ const reducer = (state = 0, action) => {
     }
 }
 
-const Counter = ({ store }) => {
+const Counter = ({ value, onIncrement, onDecrement }) => {
     return (
         <div>
             <Menu />
-            <p>Count: {store.getState()}</p>
-            <button
-                onClick={() => {
-                    store.dispatch({ type: 'INCREMENT' })
-                }}>+</button>
-            <button
-                onClick={() => {
-                    store.dispatch({ type: 'DECREMENT' })
-                }}>-</button>
+            <p>Count: {value}</p>
+            <button onClick={onIncrement}>+</button>
+            <button onClick={onDecrement}>-</button>
         </div>
     )
 }
 
+const store = createStore(counter)
 
 const render = () => {
     ReactDOM.render(
-        <Counter store={store} />,
+        <Counter
+            value={store.getState()}
+            onIncrement={() => {
+                store.dispatch({ type: 'INCREMENT' })
+            }}
+            onIncrement={() => {
+                store.dispatch({ type: 'DECREMENT' })
+            }}
+        />,
         document.getElementById('content')
     )
 }
 
-let store = createStore(reducer)
 store.subscribe(render)
 render()
 
