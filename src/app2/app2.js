@@ -6,10 +6,16 @@ import Menu from '../Menu'
 // copy index.html to `./.build` folder
 require('file?name=[name].[ext]!./app2.html')
 
+const Hello = () => {
+    return (
+        <p>Hello world</p>
+    )
+}
+
 const content = (
     <div>
         <Menu />
-        <h1>App 2</h1>
+        <Hello />
     </div>
 )
 
