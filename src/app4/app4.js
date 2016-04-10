@@ -37,7 +37,7 @@ const render = () => {
             onIncrement={() => {
                 store.dispatch({ type: 'INCREMENT' })
             }}
-            onIncrement={() => {
+            onDecrement={() => {
                 store.dispatch({ type: 'DECREMENT' })
             }}
         />,
