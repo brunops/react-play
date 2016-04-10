@@ -6,7 +6,12 @@ Experiments with React, react-router, redux .....
 
 ```sh
 npm install
+npm start
 ```
+
+Go to `http://localhost:8080/`
+
+#For development
 
 One tab:
 ```sh
