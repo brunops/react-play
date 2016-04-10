@@ -7,6 +7,7 @@ const Menu = () => {
             <li><a href="app2.html">App 2</a></li>
             <li><a href="app3.html">Counter - Redux simulation / no React</a></li>
             <li><a href="app4.html">Counter - Redux + React</a></li>
+            <li><a href="app5.html">Redux Form</a></li>
         </ul>
     )
 }
