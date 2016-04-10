@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         app1: path.resolve(__dirname, './src/app1/app1.js'),
         app2: path.resolve(__dirname, './src/app2/app2.js'),
-        app3: path.resolve(__dirname, './src/app3/app3.js')
+        app3: path.resolve(__dirname, './src/app3/app3.js'),
+        app4: path.resolve(__dirname, './src/app4/app4.js')
     },
 
     output: {

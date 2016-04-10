@@ -1,5 +1,9 @@
-require('file?name=[name].[ext]!./app3.html')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
+import Menu from '../Menu'
+
+require('file?name=[name].[ext]!./app4.html')
 
 const createStore = (reducer) => {
     let state,
@@ -14,14 +18,13 @@ const createStore = (reducer) => {
 
     const subscribe = (listener) => {
         listeners.push(listener)
-
         // return an unsubscribe function
         return () => {
             listeners.filter(l => l !== listener)
         }
     }
 
-    // start store with empty state
+    // initialize store
     dispatch({})
 
     return { getState, dispatch, subscribe }
@@ -38,22 +41,36 @@ const reducer = (state = 0, action) => {
     }
 }
 
-let store = createStore(reducer)
+const Counter = ({ store }) => {
+    return (
+        <div>
+            <Menu />
+            <p>Count: {store.getState()}</p>
+            <button
+                onClick={() => {
+                    store.dispatch({ type: 'INCREMENT' })
+                }}>+</button>
+            <button
+                onClick={() => {
+                    store.dispatch({ type: 'DECREMENT' })
+                }}>-</button>
+        </div>
+    )
+}
+
 
 const render = () => {
-    document.getElementById('counter').innerText = store.getState()
+    ReactDOM.render(
+        <Counter store={store} />,
+        document.getElementById('content')
+    )
 }
+
+let store = createStore(reducer)
+store.subscribe(render)
 render()
 
-store.subscribe(render)
 
-document.getElementById('inc').addEventListener('click', () => {
-    store.dispatch({ type: 'INCREMENT' })
-})
-
-document.getElementById('dec').addEventListener('click', () => {
-    store.dispatch({ type: 'DECREMENT' })
-})
 
 
 
