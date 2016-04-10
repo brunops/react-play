@@ -36,7 +36,6 @@ const App = ({ value, onChange, onForceUpdate }) => {
 }
 
 const onChange = (e) => {
-    console.log(arguments, e.target.value)
     store.dispatch({
         type: 'UPDATE',
         value: e.target.value
@@ -51,7 +50,6 @@ const onForceUpdate = () => {
 }
 
 const render = () => {
-    console.log('state: %s', store.getState())
     ReactDOM.render(
         <App
             value={store.getState()}
