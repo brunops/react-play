@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 
-import Menu from '../Menu'
+import Menu from '../components/Menu'
 
 import 'file?name=[name].[ext]!./app5.html'
 

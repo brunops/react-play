@@ -2,7 +2,7 @@ import { createStore } from 'redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Menu from '../Menu'
+import Menu from '../components/Menu'
 
 require('file?name=[name].[ext]!./app4.html')
 

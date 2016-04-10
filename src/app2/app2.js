@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import Menu from '../Menu'
+import Menu from '../components/Menu'
 
 // copy index.html to `./.build` folder
 require('file?name=[name].[ext]!./app2.html')
