@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import Menu from '../components/Menu'
 
 // copy index.html to `./.build` folder
-require('file?name=[name].[ext]!./app1.html')
+import 'file?name=[name].[ext]!./app1.html'
 
 const content = (
     <div>

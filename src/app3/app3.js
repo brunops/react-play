@@ -1,4 +1,4 @@
-require('file?name=[name].[ext]!./app3.html')
+import 'file?name=[name].[ext]!./app3.html'
 
 
 const createStore = (reducer) => {

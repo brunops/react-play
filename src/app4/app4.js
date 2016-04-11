@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 
 import Menu from '../components/Menu'
 
-require('file?name=[name].[ext]!./app4.html')
+import 'file?name=[name].[ext]!./app4.html'
 
 const counter = (state = 0, action) => {
     switch (action.type) {
