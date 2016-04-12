@@ -2,7 +2,7 @@
 
 Independent React experiments. Write in commonjs, es6, ... anything, and play with it.
 
-#Creating a new project
+##Creating a new project
 
 1. Create an app folder in `src/appX`
 2. Create a `appX/appX.html` (should have a `script` tag including `appX.js`) and `appX/appX.js` files
@@ -10,7 +10,7 @@ Independent React experiments. Write in commonjs, es6, ... anything, and play wi
 4. See "Usage for development" on how to run it
 5. Access `http://localhost:8080/appX.html` to see the result
 
-#Usage
+##Usage
 
 ```sh
 npm install
@@ -19,7 +19,7 @@ npm start
 
 Go to `http://localhost:8080/`
 
-#For development
+##For development
 
 One tab:
 ```sh
@@ -33,6 +33,6 @@ npm run watch
 
 Go to `http://localhost:8080/`
 
-#License
+##License
 
 MIT
