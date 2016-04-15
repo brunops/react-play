@@ -1,15 +1,21 @@
 var webpack = require('webpack'),
-    path = require('path')
+    path = require('path'),
+    fs = require('fs')
 
+// Read all apps as new entries
+// There are a couple of assumptions here:
+//      - folder name is the same as the javascript entry file name
+//      - any folder not called "components" is treated as an entry
+var entries = fs.readdirSync('./src').reduce(function (prev, curr) {
+    if (curr !== 'components') {
+        prev[curr] = path.resolve(__dirname, './src/' + curr + '/' + curr + '.js')
+    }
+
+    return prev
+}, {})
 
 module.exports = {
-    entry: {
-        app1: path.resolve(__dirname, './src/app1/app1.js'),
-        app2: path.resolve(__dirname, './src/app2/app2.js'),
-        app3: path.resolve(__dirname, './src/app3/app3.js'),
-        app4: path.resolve(__dirname, './src/app4/app4.js'),
-        app5: path.resolve(__dirname, './src/app5/app5.js')
-    },
+    entry: entries,
 
     output: {
         path: path.resolve(__dirname, '.build'),

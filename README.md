@@ -5,10 +5,9 @@ Independent React experiments. Write in commonjs, es6, ... anything, and play wi
 ##Creating a new project
 
 1. Create an app folder in `src/appX`
-2. Create a `appX/appX.html` (should have a `script` tag including `appX.js`) and `appX/appX.js` files
-3. Edit `webpack.config.js` and add a new entry point to `appX` (this can probably be removed later on by reading `src/` folder but ¯\_(ツ)_/¯)
-4. See "Usage for development" on how to run it
-5. Access `http://localhost:8080/appX.html` to see the result
+2. Create a `appX/appX.html` (should have a `script` tag including `appX.js`) and `appX/appX.js` files (note that folder name must be the same as the javascript file to be automatically picked up by webpack config)
+3. See "Usage for development" on how to run it
+4. Access `http://localhost:8080/appX.html` to see the result
 
 ##Usage
 
