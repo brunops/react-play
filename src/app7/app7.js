@@ -124,6 +124,7 @@ class TodoApp extends React.Component {
 
         return (
             <div>
+                <Menu />
                 <input type="text" ref="input" />
                 <button onClick={e => {
                     dispatch({
