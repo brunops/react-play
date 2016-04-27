@@ -33,6 +33,9 @@ const todos = (state = [], action) => {
                 return t
             })
 
+        case 'DELETE_TODO':
+            return state.filter(t => t.id !== action.id)
+
         default:
             return state
     }
@@ -55,6 +58,8 @@ const FilterLink = ({ dispatch, filter, currentFilter, children }) => {
     return (
         <a href="#"
             onClick={e => {
+                e.preventDefault()
+
                 dispatch({
                     type: 'SET_VISIBILITY_FILTER',
                     filter: filter
@@ -102,6 +107,18 @@ class TodoApp extends React.Component {
                     }}
                     style={style}>
                     {t.text}
+                    {' '}
+                    <a href="#"
+                        onClick={e => {
+                            e.preventDefault()
+
+                            dispatch({
+                                type: 'DELETE_TODO',
+                                id: t.id
+                            })
+                        }}>
+                        x
+                    </a>
                 </li>
             )
         })
