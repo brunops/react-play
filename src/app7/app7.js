@@ -8,29 +8,40 @@ import 'file?name=[name].[ext]!./app7.html'
 
 let id = 0
 
+const todo = (state, action) => {
+    switch (action.type) {
+        case 'ADD_TODO':
+            return {
+                id: ++id,
+                text: action.text,
+                completed: false
+            }
+
+        case 'TOGGLE_TODO':
+            if (state.id === action.id) {
+                return {
+                    ...state,
+                    completed: !state.completed
+                }
+            }
+
+            return state
+
+        default:
+            state
+    }
+}
+
 const todos = (state = [], action) => {
     switch (action.type) {
         case 'ADD_TODO':
             return [
                 ...state,
-                {
-                    id: ++id,
-                    text: action.text,
-                    completed: false
-                }
+                todo(undefined, action)
             ]
 
         case 'TOGGLE_TODO':
-            return state.map(t => {
-                if (t.id === action.id) {
-                    return {
-                        ...t,
-                        completed: !t.completed
-                    }
-                }
-
-                return t
-            })
+            return state.map(t => todo(t, action))
 
         case 'DELETE_TODO':
             return state.filter(t => t.id !== action.id)
