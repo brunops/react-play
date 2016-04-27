@@ -40,15 +40,44 @@ const todos = (state = [], action) => {
 
 const visibilityFilter = (state = 'SHOW_ALL', action) => {
     switch (action.type) {
-        case 'SHOW_ALL':
-        case 'SHOW_COMPLETED':
-        case 'SHOW_UNCOMPLETED':
+        case 'SET_VISIBILITY_FILTER':
             return action.filter
         default:
             return state
     }
 }
 
+const FilterLink = ({ dispatch, filter, currentFilter, children }) => {
+    if (filter === currentFilter) {
+        return <span>{children}</span>
+    }
+
+    return (
+        <a href="#"
+            onClick={e => {
+                dispatch({
+                    type: 'SET_VISIBILITY_FILTER',
+                    filter: filter
+                })
+            }}
+            >
+            {children}
+        </a>
+    )
+}
+
+const getVisibleTodos = (todos, visibilityFilter) => {
+    switch (visibilityFilter) {
+        case 'SHOW_ALL':
+            return todos
+        case 'SHOW_ACTIVE':
+            return todos.filter(t => !t.completed)
+        case 'SHOW_COMPLETED':
+            return todos.filter(t => t.completed)
+        default:
+            return todos
+    }
+}
 
 class TodoApp extends React.Component {
     render() {
@@ -58,14 +87,13 @@ class TodoApp extends React.Component {
             visibilityFilter
         } = this.props
 
-        const visibleTodos = todos.map(t => {
+        const visibleTodos = getVisibleTodos(todos, visibilityFilter).map(t => {
             const style = {
                 textDecoration: t.completed ? 'line-through' : ''
             }
 
             return (
-                <li
-                    key={t.id}
+                <li key={t.id}
                     onClick={e => {
                         dispatch({
                             type: 'TOGGLE_TODO',
@@ -90,9 +118,28 @@ class TodoApp extends React.Component {
                 }}>
                 Add Todo
                 </button>
+
                 <ul>
                     {visibleTodos}
                 </ul>
+
+                <FilterLink dispatch={dispatch}
+                    filter='SHOW_ALL'
+                    currentFilter={visibilityFilter}>
+                    All
+                </FilterLink>
+                {' '}
+                <FilterLink dispatch={dispatch}
+                    filter='SHOW_ACTIVE'
+                    currentFilter={visibilityFilter}>
+                    Active
+                </FilterLink>
+                {' '}
+                <FilterLink dispatch={dispatch}
+                    filter='SHOW_COMPLETED'
+                    currentFilter={visibilityFilter}>
+                    Completed
+                </FilterLink>
             </div>
         )
     }
