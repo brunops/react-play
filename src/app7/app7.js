@@ -9,7 +9,6 @@ import 'file?name=[name].[ext]!./app7.html'
 let id = 0
 
 const todos = (state = [], action) => {
-    console.log('sup?')
     switch (action.type) {
         case 'ADD_TODO':
             return [
@@ -167,12 +166,9 @@ const todoApp = combineReducers({
     visibilityFilter
 })
 
-console.log(todoApp)
-
 const store = createStore(todoApp)
 
 const render = () => {
-    console.log(store.getState())
     ReactDOM.render(
         <TodoApp
             dispatch={store.dispatch}
